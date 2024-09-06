@@ -1,4 +1,3 @@
-
 import { api } from "./AxiosService.js"
 import { AppState } from "../AppState.js"
 import { Gift } from "../models/Gift.js"
@@ -26,7 +25,12 @@ class GiftService {
 
   }
 
+  async createGift(formData) {
+    const response = await api.post('api/gifts', formData)
+    const newGift = new Gift(response.data)
+    AppState.gifts.push(newGift)
+    AppState.emit('gifts')
+  }
 }
-
 
 export const giftService = new GiftService()

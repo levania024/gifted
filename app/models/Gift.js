@@ -5,47 +5,21 @@ export class Gift {
     this.url = data.url
     this.opened = data.opened
     this.profileIdsOpened = data.profileIdsOpened
-
-
   }
 
   get giftsHTMLTemplate() {
     return `
-    <div class="card">
-              <img onclick="app.GiftController.findGift('${this.id}')"  class="img-fluid" src="${this.url}" alt="">
-              <p>${this.tag}</p>
-            </div>
-   `
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img onclick="app.GiftController.findGift('${this.id}')" class="card-img-top" src="${this.url}" alt="${this.tag}">
+          <div class="card-body">
+            <p class="card-text">${this.tag}</p>
+          </div>
+        </div>
+      </div>
+    `
   }
-
-
 }
 
 
-const data = {
 
-  "tag": {
-    "type": "String",
-    "maxlength": 120
-  },
-  "url": {
-    "type": "String",
-    "required": true,
-    "maxLength": 500
-  },
-  "opened": {
-    "type": "Boolean",
-    "default": false
-  },
-  "creatorId": {
-    "type": "SchemaObjectId",
-    "required": true,
-    "ref": "Account"
-  },
-  "profileIdsOpened": [
-    {
-      "type": "SchemaObjectId",
-      "ref": "Account"
-    }
-  ]
-}

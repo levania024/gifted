@@ -41,82 +41,36 @@
   <!-- SECTION -->
   <main>
     <div class="container">
-      <section class="row">
+      <section class="row mt-3">
         <div class="col-3 bg-success shadow">
           <h2>Gifted</h2>
-          <form onsubmit="">
-            <label for="">Tag</label>
-            <input class="mb-3" type="text" name="tag" id="tag">
-            <label class="" for="">Url</label>
-            <input type="text" name="url" id="url">
-
-            <div class="text-end mt-3">
-              <button>Submit</button>
-            </div>
-            <hr>
-            <div>
-              <label for="">Search Gifts</label>
-              <input type="search" name="search" id="search" role="button">
-            </div>
+          <form onsubmit="app.GiftController.createGift(event)">
+            <label for="tag">Tag</label>
+            <input class="form-control mb-2" type="text" name="tag" id="tag" required>
+            <label for="url">URL</label>
+            <input class="form-control mb-2" type="url" name="url" id="url" required>
+            <button class="btn btn-primary" type="submit">Create Gift</button>
           </form>
-
-        </div>
-
-
-
-
-
-
-        <!-- STUB start of gifts cards area -->
-        <div class="col-9">
-          Gift Cards
-          <div id="gifts-options" class="col-3 mb-3">
-            <!-- <div class="card">
-              <img class="img-fluid" src="${this.url}" alt="">
-              <p>${this.tag}</p>
-            </div> -->
+          <hr>
+          <div>
+            <label for="search">Search Gifts</label>
+            <div class="input-group mb-3">
+              <input type="search" class="form-control" name="search" id="search" placeholder="Search...">
+              <button class="btn btn-outline-light" type="button" onclick="app.GiftController.searchGifts()">
+                <i class="mdi mdi-magnify"></i>
+              </button>
+            </div>
           </div>
         </div>
-        <!-- End of gift cards area -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="col-9">
+          <h2>Gift Cards</h2>
+          <div id="gifts-options" class="row">
+            <!-- Gift cards will be dynamically inserted here -->
+          </div>
+        </div>
       </section>
-
-
-
     </div>
-
-
-
-
-
-
-
   </main>
 
   <!-- SECTION -->

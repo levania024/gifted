@@ -2,7 +2,7 @@ import { AppState } from "../AppState.js"
 import { giftService } from "../services/GiftService.js"
 import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
-
+import { getFormData } from "../utils/FormHandler.js"
 
 export class GiftController {
   constructor() {
@@ -35,6 +35,19 @@ export class GiftController {
       Pop.error(error)
       console.error(error)
     }
+  }
 
+  async createGift(event) {
+    try {
+      event.preventDefault()
+      const form = event.target
+      const formData = getFormData(form)
+      await giftService.createGift(formData)
+      form.reset()
+      Pop.success('Gift created successfully!')
+    } catch (error) {
+      Pop.error(error)
+      console.error(error)
+    }
   }
 }
